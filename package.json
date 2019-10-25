@@ -1,0 +1,19 @@
+{
+  "name": "socket-test",
+  "version": "1.0.0",
+  "description": "learining socket",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aditya6677/Socket-Test.git"
+  },
+  "author": "aditya76",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aditya6677/Socket-Test/issues"
+  },
+  "homepage": "https://github.com/aditya6677/Socket-Test#readme"
+}
