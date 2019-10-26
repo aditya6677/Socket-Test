@@ -4,7 +4,10 @@
   "description": "learining socket",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "export NODE_ENV=development && nodemon index.js || true",
+    "prod": "export NODE_ENV=production && nodemon index.js || true"
   },
   "repository": {
     "type": "git",
@@ -15,5 +18,12 @@
   "bugs": {
     "url": "https://github.com/aditya6677/Socket-Test/issues"
   },
-  "homepage": "https://github.com/aditya6677/Socket-Test#readme"
+  "homepage": "https://github.com/aditya6677/Socket-Test#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.7.7",
+    "socket.io": "^2.3.0",
+    "socket.io-client": "^2.3.0",
+    "swagger-ui-express": "^4.1.2"
+  }
 }
