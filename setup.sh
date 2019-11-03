@@ -1,1 +1,1 @@
-echo "Welcome to Socket Test Setup";
+npm i && npm run dev

@@ -3,6 +3,7 @@ const config = require('./config/config')();
 const port = config.PORT;
 const db = require('./database/db');
 const swaggerUi = require('swagger-ui-express');
+const bodyParser = require('body-parser');
 const swaggerDocument = require('./swagger/swagger.json');
 
 //Socket
@@ -10,10 +11,18 @@ let socket = require('./socket/index');
  
 //Routes
 let user = require('./routes/user');
-let auth = require('./auth/authenticate.js');
+let authenticate = require('./auth/authenticate.js');
+let auth = require('./routes/auth');
+
+//Parser
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(bodyParser.json());
 
 //Auth Middleware
-app.use('/api', auth);
+app.use('/api', authenticate);
+app.use('/auth', auth);
 
 //Swagger
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));

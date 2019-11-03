@@ -4,38 +4,32 @@
         "title": "Socket Test Swagger"
     },
     "schemes": [
-        "https",
-        "http"
+        "http",
+        "https"
     ],
     "paths": {
-        "/pet/{petId}": {
+        "/api": {
             "get": {
-                "summary": "Find pet by ID",
-                "description": "Returns a single pet",
-                "operationId": "getPetById",
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Auth Api",
+                "description": "Check for authorization",
+                "operationId": "auth",
                 "produces": [
                     "application/json",
                     "application/xml"
                 ],
-                "parameters": [
-                    {
-                        "name": "petId",
-                        "in": "path",
-                        "description": "ID of pet to return",
-                        "required": true,
-                        "type": "integer",
-                        "format": "int64"
-                    }
-                ],
+                
                 "responses": {
                     "200": {
-                        "description": "successful operation"
+                        "description": "Successful operation"
                     },
                     "400": {
-                        "description": "Invalid ID supplied"
+                        "description": "Invalid token"
                     },
                     "404": {
-                        "description": "Pet not found"
+                        "description": "Not found"
                     }
                 },
                 "security": [
@@ -43,156 +37,76 @@
                         "api_key": []
                     }
                 ]
-            },
-            "post": {
-                "tags": [
-                    "pet"
-                ],
-                "summary": "Updates a pet in the store with form data",
-                "description": "",
-                "operationId": "updatePetWithForm",
-                "consumes": [
-                    "application/x-www-form-urlencoded"
-                ],
-                "produces": [
-                    "application/json",
-                    "application/xml"
-                ],
-                "parameters": [
-                    {
-                        "name": "petId",
-                        "in": "path",
-                        "description": "ID of pet that needs to be updated",
-                        "required": true,
-                        "type": "integer",
-                        "format": "int64"
-                    },
-                    {
-                        "name": "name",
-                        "in": "formData",
-                        "description": "Updated name of the pet",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "status",
-                        "in": "formData",
-                        "description": "Updated status of the pet",
-                        "required": false,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "405": {
-                        "description": "Invalid input"
-                    }
-                },
-                "security": [
-                    {
-                        "petstore_auth": [
-                            "write:pets",
-                            "read:pets"
-                        ]
-                    }
-                ]
-            },
-            "delete": {
-                "tags": [
-                    "pet"
-                ],
-                "summary": "Deletes a pet",
-                "description": "",
-                "operationId": "deletePet",
-                "produces": [
-                    "application/json",
-                    "application/xml"
-                ],
-                "parameters": [
-                    {
-                        "name": "api_key",
-                        "in": "header",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "petId",
-                        "in": "path",
-                        "description": "Pet id to delete",
-                        "required": true,
-                        "type": "integer",
-                        "format": "int64"
-                    }
-                ],
-                "responses": {
-                    "400": {
-                        "description": "Invalid ID supplied"
-                    },
-                    "404": {
-                        "description": "Pet not found"
-                    }
-                },
-                "security": [
-                    {
-                        "petstore_auth": [
-                            "write:pets",
-                            "read:pets"
-                        ]
-                    }
-                ]
             }
         },
-        "/pet/{petId}/uploadImage": {
+        "/auth/login": {
             "post": {
                 "tags": [
-                    "pet"
+                    "Auth"
                 ],
-                "summary": "uploads an image",
-                "description": "",
-                "operationId": "uploadFile",
-                "consumes": [
-                    "multipart/form-data"
-                ],
+                "summary": "Login Api",
+                "description": "Login Api",
+                "operationId": "login",
                 "produces": [
-                    "application/json"
+                    "application/json",
+                    "application/xml",
+                    "application/x-www-form-urlencoded"
                 ],
                 "parameters": [
                     {
-                        "name": "petId",
-                        "in": "path",
-                        "description": "ID of pet to update",
-                        "required": true,
-                        "type": "integer",
-                        "format": "int64"
-                    },
-                    {
-                        "name": "additionalMetadata",
+                        "name": "username",
                         "in": "formData",
-                        "description": "Additional data to pass to server",
-                        "required": false,
+                        "description": "",
+                        "required": true,
                         "type": "string"
                     },
                     {
-                        "name": "file",
+                        "name": "password",
                         "in": "formData",
-                        "description": "file to upload",
-                        "required": false,
-                        "type": "file"
+                        "description": "",
+                        "required": true,
+                        "type": "string"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "$ref": "#/definitions/ApiResponse"
-                        }
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid token"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/api/user/profile": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Get user profile",
+                "description": "User profile",
+                "operationId": "profile",
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid token"
+                    },
+                    "404": {
+                        "description": "Not found"
                     }
                 },
                 "security": [
                     {
-                        "petstore_auth": [
-                            "write:pets",
-                            "read:pets"
-                        ]
+                        "api_key": []
                     }
                 ]
             }
@@ -820,17 +734,8 @@
     "securityDefinitions": {
         "api_key": {
             "type": "apiKey",
-            "name": "api_key",
+            "name": "x-access-token",
             "in": "header"
-        },
-        "petstore_auth": {
-            "type": "oauth2",
-            "authorizationUrl": "https://petstore.swagger.io/oauth/authorize",
-            "flow": "implicit",
-            "scopes": {
-                "read:pets": "read your pets",
-                "write:pets": "modify pets in your account"
-            }
         }
     }
 }

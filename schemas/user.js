@@ -12,11 +12,18 @@ let user = new Schema ({
     email : {
         type : String
     },
+    username : {
+        type : String,
+        require : true
+    },
     password : {
-        type : String
+        type : String,
+        require : true
     },
     status : {
-        type : String
+        type : String,
+        enum :['0','1','2'],
+        default : '0'
     }
 });
 

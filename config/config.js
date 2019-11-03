@@ -5,13 +5,15 @@ module.exports = () => {
             return {
                 HOST : 'localhost',
                 PORT : '8007',
-                DATABASE : 'mongodb+srv://Aditya76:Aditya123@socket-cluster-whx6d.mongodb.net/test?retryWrites=true&w=majority'
+                DATABASE : 'mongodb+srv://Aditya76:Aditya123@socket-cluster-whx6d.mongodb.net/test?retryWrites=true&w=majority',
+                JWT_SECRET : 'worldisfullofdevelopers'
             }
         case 'production':
             return {
                 HOST : 'localhost',
                 PORT : '8007',
-                DATABASE : 'mongodb+srv://Aditya76:Aditya123@socket-cluster-whx6d.mongodb.net/test?retryWrites=true&w=majority'
+                DATABASE : 'mongodb+srv://Aditya76:Aditya123@socket-cluster-whx6d.mongodb.net/test?retryWrites=true&w=majority',
+                JWT_SECRET : 'worldisfullofdevelopers'
             }
     }
 }
