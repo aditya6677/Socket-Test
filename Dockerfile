@@ -1,6 +1,6 @@
 FROM node:10
 
-WORKDIR /Users/shinchan/Projects/docker/
+WORKDIR /Users/shinchan/Projects/Socket
 
 COPY package*.json ./
 
