@@ -2,12 +2,10 @@
   "name": "socket-test",
   "version": "1.0.0",
   "description": "learining socket",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
-    "dev": "export NODE_ENV=development && nodemon index.js || true",
-    "prod": "export NODE_ENV=production && nodemon index.js || true"
+    "start": "export NODE_ENV=production && nodemon index.js || true",
+    "dev": "export NODE_ENV=development && nodemon index.js || true"
   },
   "repository": {
     "type": "git",

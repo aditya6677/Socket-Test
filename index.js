@@ -31,5 +31,6 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use('/api/user', user);
 
 app.listen(port,()=>{
+    console.log(`Running in ${process.env.NODE_ENV} mode`);
     console.log(`Server is listening on port ${port}`);
 });
